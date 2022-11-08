@@ -1,0 +1,7 @@
+post https://api.iotproj.ir/api/auth/local/
+content-type: application/json
+
+{
+  "identifier": "asdp.matin@gmail.com",
+  "password": "m0bH^M6236"
+}

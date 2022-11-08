@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leds",
+  "info": {
+    "singularName": "led",
+    "pluralName": "leds",
+    "displayName": "led",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "led1": {
+      "type": "boolean"
+    },
+    "led2": {
+      "type": "boolean"
+    },
+    "led3": {
+      "type": "boolean"
+    },
+    "led4": {
+      "type": "boolean"
+    },
+    "led5": {
+      "type": "boolean"
+    }
+  }
+}

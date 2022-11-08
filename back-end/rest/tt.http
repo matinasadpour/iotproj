@@ -1,0 +1,2 @@
+# post http://api.iotproj.ir/api/leds?IMEI=123456sdfdsdfsdf789565
+post http://localhost:1337/api/leds?IMEI=a1

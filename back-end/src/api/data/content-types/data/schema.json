@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "datas",
+  "info": {
+    "singularName": "data",
+    "pluralName": "datas",
+    "displayName": "data",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IMEI": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "a1": {
+      "type": "string",
+      "required": true
+    },
+    "a2": {
+      "type": "string",
+      "required": true
+    },
+    "a3": {
+      "type": "string",
+      "required": true
+    },
+    "a4": {
+      "type": "string",
+      "required": true
+    },
+    "a5": {
+      "type": "string",
+      "required": true
+    },
+    "d1": {
+      "type": "boolean",
+      "required": true
+    },
+    "d2": {
+      "type": "boolean",
+      "required": true
+    },
+    "d3": {
+      "type": "boolean",
+      "required": true
+    },
+    "d4": {
+      "type": "boolean",
+      "required": true
+    },
+    "d5": {
+      "type": "boolean",
+      "required": true
+    }
+  }
+}
