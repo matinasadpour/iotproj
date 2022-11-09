@@ -8,24 +8,33 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
+    "IMEI":{
+      "type": "string",
+      "required": true
+    },
     "led1": {
-      "type": "boolean"
+      "type": "string",
+      "default": "LOW"
     },
     "led2": {
-      "type": "boolean"
+      "type": "string",
+      "default": "LOW"
     },
     "led3": {
-      "type": "boolean"
+      "type": "string",
+      "default": "LOW"
     },
     "led4": {
-      "type": "boolean"
+      "type": "string",
+      "default": "LOW"
     },
     "led5": {
-      "type": "boolean"
+      "type": "string",
+      "default": "LOW"
     }
   }
 }
