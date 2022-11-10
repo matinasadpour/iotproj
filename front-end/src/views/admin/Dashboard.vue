@@ -6,14 +6,14 @@ import CardSocialTraffic from '@/components/Cards/CardSocialTraffic.vue';
 
 if (!sessionStorage.getItem('jwt')) $router.push('/auth/login');
 
-let test = 'sda';
+// let test = 'sda';
 </script>
 
 <template>
   <div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-        <card-line-chart :imei="test" />
+        <card-line-chart />
       </div>
     </div>
     <div class="flex flex-wrap mt-4">

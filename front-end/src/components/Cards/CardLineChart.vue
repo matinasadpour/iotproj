@@ -37,11 +37,12 @@ nextTick(async () => {
         a4: 0,
       };
       for (let j = 0; j < content.data.length; j++) {
-        sum.a1 += content.data[j].attributes.a1;
-        sum.a2 += content.data[j].attributes.a2;
-        sum.a3 += content.data[j].attributes.a4;
-        sum.a4 += content.data[j].attributes.a4;
+        sum.a1 += +content.data[j].attributes.a1;
+        sum.a2 += +content.data[j].attributes.a2;
+        sum.a3 += +content.data[j].attributes.a4;
+        sum.a4 += +content.data[j].attributes.a4;
       }
+      console.log(sum);
       a.a1.push({ x: str, y: sum.a1 / content.data.length });
       a.a2.push({ x: str, y: sum.a2 / content.data.length });
       a.a3.push({ x: str, y: sum.a3 / content.data.length });
@@ -53,6 +54,7 @@ nextTick(async () => {
       a.a4.push({ x: str, y: 0 });
     }
   }
+  console.log(a);
 
   var config = {
     type: 'line',
