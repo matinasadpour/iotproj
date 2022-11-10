@@ -5,13 +5,15 @@ import CardPageVisits from '@/components/Cards/CardPageVisits.vue';
 import CardSocialTraffic from '@/components/Cards/CardSocialTraffic.vue';
 
 if (!sessionStorage.getItem('jwt')) $router.push('/auth/login');
+
+let test = 'sda';
 </script>
 
 <template>
   <div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-        <card-line-chart />
+        <card-line-chart :imei="test" />
       </div>
     </div>
     <div class="flex flex-wrap mt-4">

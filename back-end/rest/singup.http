@@ -2,8 +2,8 @@ post http://localhost:1337/api/auth/local/register
 content-type: application/json
 
 {
-  "email": "bbb@gmail.com",
-  "username": "bbb",
+  "email": "zzzxxx@gmail.com",
+  "username": "zzzxxx",
   "password": "123456",
-  "IMEI": "bbb"
+  "IMEI": "zzzxxx"
 }

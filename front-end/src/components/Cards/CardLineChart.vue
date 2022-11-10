@@ -1,11 +1,17 @@
 <script setup>
-import { nextTick } from 'vue';
+import { nextTick, computed } from 'vue';
 import Chart from 'chart.js';
 
+const probs = defineProps(['imei']);
+
+const imei = computed(() => probs.imei);
+
 nextTick(async () => {
+  let IMEI;
+  if (!imei.value) IMEI = sessionStorage.getItem('IMEI');
+  else IMEI = imei.value;
   let now = new Date(new Date().setHours(0, 0, 0, 0));
-  let temp = [];
-  let hum = [];
+  let a = { a1: [], a2: [], a3: [], a4: [] };
   for (let i = 0; i < 31; i++) {
     let tmp = new Date();
     tmp.setDate(now.getDate() - i);
@@ -14,9 +20,7 @@ nextTick(async () => {
       (tmp.getMonth() + 1)
     ).slice(-2)}-${('0' + tmp.getDate()).slice(-2)}`;
     let res = await fetch(
-      `http://api.iotproj.ir/api/datas?filters[createdAt][$contains]=${str}&filters[IMEI][$eqi]=${sessionStorage.getItem(
-        'IMEI'
-      )}&pagination[pageSize]=100`,
+      `https://www.api.iotproj.ir/api/datas?filters[createdAt][$contains]=${str}&filters[IMEI][$eqi]=${IMEI}&pagination[pageSize]=100`,
       {
         type: 'GET',
         headers: {
@@ -26,39 +30,58 @@ nextTick(async () => {
     );
     let content = await res.json();
     if (content.data.length) {
-      let sum1 = 0;
-      let sum2 = 0;
+      let sum = {
+        a1: 0,
+        a2: 0,
+        a3: 0,
+        a4: 0,
+      };
       for (let j = 0; j < content.data.length; j++) {
-        sum1 += content.data[j].attributes.temp;
-        sum2 += content.data[j].attributes.hum;
+        sum.a1 += content.data[j].attributes.a1;
+        sum.a2 += content.data[j].attributes.a2;
+        sum.a3 += content.data[j].attributes.a4;
+        sum.a4 += content.data[j].attributes.a4;
       }
-      temp.push({ x: str, y: sum1 / content.data.length });
-      hum.push({ x: str, y: sum2 / content.data.length });
+      a.a1.push({ x: str, y: sum.a1 / content.data.length });
+      a.a2.push({ x: str, y: sum.a2 / content.data.length });
+      a.a3.push({ x: str, y: sum.a3 / content.data.length });
+      a.a4.push({ x: str, y: sum.a4 / content.data.length });
     } else {
-      temp.push({ x: str, y: 0 });
-      hum.push({ x: str, y: 0 });
+      a.a1.push({ x: str, y: 0 });
+      a.a2.push({ x: str, y: 0 });
+      a.a3.push({ x: str, y: 0 });
+      a.a4.push({ x: str, y: 0 });
     }
   }
-
-  // let start = new Date(),
-  //   end = new Date();
-  // start.setDate(start.getDate() - 29); // set to 'now' minus 7 days.
-  // start.setHours(0, 0, 0, 0); // set to midnight.
 
   var config = {
     type: 'line',
     data: {
       datasets: [
         {
-          label: 'Temperature',
-          data: temp,
+          label: 'A1',
+          data: a.a1,
           borderColor: '#4c51bf',
           backgroundColor: '#4c51bf',
           fill: false,
         },
         {
-          label: 'Humidity',
-          data: hum,
+          label: 'A2',
+          data: a.a2,
+          borderColor: '#009999',
+          backgroundColor: '#009999',
+          fill: false,
+        },
+        {
+          label: 'A3',
+          data: a.a3,
+          borderColor: '#660066',
+          backgroundColor: '#660066',
+          fill: false,
+        },
+        {
+          label: 'A4',
+          data: a.a4,
           borderColor: '#fff',
           backgroundColor: '#fff',
           fill: false,
@@ -132,6 +155,29 @@ nextTick(async () => {
 </script>
 
 <template>
+  <!-- <div
+    class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+  >
+    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+      <form>
+        <div class="flex flex-wrap mt-6">
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Select User:
+              </label>
+              <select
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              ></select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> -->
   <div
     class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700"
   >

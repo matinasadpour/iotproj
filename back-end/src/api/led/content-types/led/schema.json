@@ -27,14 +27,6 @@
     "led3": {
       "type": "string",
       "default": "LOW"
-    },
-    "led4": {
-      "type": "string",
-      "default": "LOW"
-    },
-    "led5": {
-      "type": "string",
-      "default": "LOW"
     }
   }
 }

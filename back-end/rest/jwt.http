@@ -1,7 +1,7 @@
-post https://api.iotproj.ir/api/auth/local/
+post http://localhost:1337/api/auth/local/
 content-type: application/json
 
 {
-  "identifier": "asdp.matin@gmail.com",
-  "password": "m0bH^M6236"
+  "identifier": "aa@gmail.com",
+  "password": "123456789"
 }

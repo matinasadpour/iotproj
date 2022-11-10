@@ -36,10 +36,6 @@
       "type": "string",
       "required": true
     },
-    "a5": {
-      "type": "string",
-      "required": true
-    },
     "d1": {
       "type": "boolean",
       "required": true
@@ -53,10 +49,6 @@
       "required": true
     },
     "d4": {
-      "type": "boolean",
-      "required": true
-    },
-    "d5": {
       "type": "boolean",
       "required": true
     }

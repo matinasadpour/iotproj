@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "errors",
+  "info": {
+    "singularName": "error",
+    "pluralName": "errors",
+    "displayName": "error",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IMEI": {
+      "type": "string",
+      "required": true
+    },
+    "error": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
