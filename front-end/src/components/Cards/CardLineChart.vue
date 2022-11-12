@@ -20,7 +20,7 @@ nextTick(async () => {
       (tmp.getMonth() + 1)
     ).slice(-2)}-${('0' + tmp.getDate()).slice(-2)}`;
     let res = await fetch(
-      `https://www.api.iotproj.ir/api/datas?filters[createdAt][$contains]=${str}&filters[IMEI][$eqi]=${IMEI}&pagination[pageSize]=100`,
+      `${api}/api/datas?filters[createdAt][$contains]=${str}&filters[IMEI][$eqi]=${IMEI}&pagination[pageSize]=100`,
       {
         type: 'GET',
         headers: {

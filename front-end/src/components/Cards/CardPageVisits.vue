@@ -5,7 +5,7 @@ const content = ref(null);
 
 nextTick(async () => {
   let res = await fetch(
-    `https://www.api.iotproj.ir/api/datas?filters[IMEI][$eqi]=${sessionStorage.getItem(
+    `${api}/api/datas?filters[IMEI][$eqi]=${sessionStorage.getItem(
       'IMEI'
     )}&pagination[pageSize]=25`,
     {

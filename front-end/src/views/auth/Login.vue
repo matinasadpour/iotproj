@@ -11,7 +11,7 @@ const password = ref('');
 const invalid = ref(false);
 
 const singin = async () => {
-  const res = await fetch('https://www.api.iotproj.ir/api/auth/local', {
+  const res = await fetch(`${api}/api/auth/local`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

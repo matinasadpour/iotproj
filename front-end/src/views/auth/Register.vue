@@ -12,21 +12,18 @@ const invalid = ref(false);
 
 const singup = async () => {
   if (imei.value && email.value && username.value && password.value) {
-    const res = await fetch(
-      'https://www.api.iotproj.ir/api/auth/local/register',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email.value,
-          username: username.value,
-          IMEI: imei.value,
-          password: password.value,
-        }),
-      }
-    );
+    const res = await fetch(`${api}/api/auth/local/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email.value,
+        username: username.value,
+        IMEI: imei.value,
+        password: password.value,
+      }),
+    });
     if (res.status === 400) {
       invalid.value = true;
     } else if (res.status === 200) {

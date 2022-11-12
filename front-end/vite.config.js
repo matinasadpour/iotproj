@@ -11,4 +11,7 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  define: {
+    api: JSON.stringify('http://localhost:1337'),
+  },
 });
