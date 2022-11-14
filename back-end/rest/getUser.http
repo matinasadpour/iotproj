@@ -1,2 +1,2 @@
-get http://localhost:1337/api/users/me
+get http://localhost:1337/api/users/me?populate=role
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY4MDU5MDExLCJleHAiOjE2NzA2NTEwMTF9.VJMcXRorCpma0iJXnqNcXrlGoT8qX8OMcD3hzIrpqLk

@@ -14,11 +14,30 @@
   "attributes": {
     "IMEI": {
       "type": "string",
-      "required": true
+      "required": true,
+      "maxLength": 10,
+      "unique": false,
+      "minLength": 10
     },
-    "error": {
-      "type": "string",
-      "required": true
+    "d1": {
+      "type": "boolean",
+      "default": false
+    },
+    "d2": {
+      "type": "boolean",
+      "default": false
+    },
+    "d3": {
+      "type": "boolean",
+      "default": false
+    },
+    "d4": {
+      "type": "boolean",
+      "default": false
+    },
+    "read": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -11,7 +11,7 @@ const password = ref('');
 const invalid = ref(false);
 
 const singin = async () => {
-  const res = await fetch(`${api}/api/auth/local`, {
+  let res = await fetch(`${api}/api/auth/local`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -21,10 +21,18 @@ const singin = async () => {
   if (res.status === 400) {
     invalid.value = true;
   } else if (res.status === 200) {
-    const content = await res.json();
+    let content = await res.json();
     sessionStorage.setItem('jwt', content.jwt);
-    sessionStorage.setItem('IMEI', content.user.IMEI);
-    $router.push('/admin/dashboard');
+    res = await fetch(`${api}/api/users/me?populate=role`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${content.jwt}`,
+      },
+    });
+    content = await res.json();
+    sessionStorage.setItem('role', content.role.name);
+    if (content.role.name === 'admin') $router.push('/admin/dashboard');
+    else if (content.role.name === 'doctor') $router.push('/doctor/dashboard');
   }
 };
 </script>

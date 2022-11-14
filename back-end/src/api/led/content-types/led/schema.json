@@ -12,9 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "IMEI":{
+    "IMEI": {
       "type": "string",
-      "required": true
+      "required": true,
+      "maxLength": 10,
+      "minLength": 10
     },
     "led1": {
       "type": "string",

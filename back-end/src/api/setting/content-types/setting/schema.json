@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "settings",
+  "info": {
+    "singularName": "setting",
+    "pluralName": "settings",
+    "displayName": "setting"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IMEI": {
+      "type": "uid",
+      "required": true,
+      "minLength": 10,
+      "maxLength": 10
+    },
+    "wifi": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "gsm": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "setting": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "led": {
+      "type": "biginteger",
+      "default": "0"
+    }
+  }
+}

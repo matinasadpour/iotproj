@@ -12,7 +12,10 @@ module.exports = createCoreController("api::error.error", ({ strapi }) => ({
     await strapi.entityService.create("api::error.error", {
       data: {
         IMEI: data.IMEI,
-        error: data.error,
+        d1: data.d1,
+        d2: data.d2,
+        d3: data.d3,
+        d4: data.d4,
       },
     });
     ctx.send(

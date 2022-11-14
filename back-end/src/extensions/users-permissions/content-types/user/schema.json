@@ -63,9 +63,11 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "IMEI": {
-      "type": "uid",
-      "required": true
+    "patients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::patient.patient",
+      "mappedBy": "doctor"
     }
   }
 }

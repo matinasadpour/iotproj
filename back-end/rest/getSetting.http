@@ -1,0 +1,1 @@
+get http://localhost:1337/api/settings?IMEI=1234567891

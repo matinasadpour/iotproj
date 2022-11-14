@@ -12,8 +12,9 @@ import App from '@/App.vue';
 
 // layouts
 
-import Admin from '@/layouts/Admin.vue';
 import Auth from '@/layouts/Auth.vue';
+import Admin from '@/layouts/Admin.vue';
+import Doctor from '@/layouts/Doctor.vue';
 
 // views for Admin layout
 
@@ -29,19 +30,8 @@ import Register from '@/views/auth/Register.vue';
 
 const routes = [
   {
-    path: '/admin',
-    redirect: '/admin/dashboard',
-    component: Admin,
-    children: [
-      {
-        path: '/admin/dashboard',
-        component: Dashboard,
-      },
-      {
-        path: '/admin/settings',
-        component: Settings,
-      },
-    ],
+    path: '/',
+    redirect: '/auth/login',
   },
   {
     path: '/auth',
@@ -59,10 +49,36 @@ const routes = [
     ],
   },
   {
-    path: '/',
-    redirect: '/auth/login',
-    //component: Index,
+    path: '/admin',
+    redirect: '/admin/dashboard',
+    component: Admin,
+    children: [
+      {
+        path: '/admin/dashboard',
+        component: Dashboard,
+      },
+      {
+        path: '/admin/settings',
+        component: Settings,
+      },
+    ],
   },
+  {
+    path: '/doctor',
+    redirect: '/doctor/dashboard',
+    component: Admin,
+    children: [
+      {
+        path: '/doctor/dashboard',
+        component: Dashboard,
+      },
+      {
+        path: '/doctor/settings',
+        component: Settings,
+      },
+    ],
+  },
+
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
 

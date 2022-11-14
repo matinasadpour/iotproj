@@ -1,3 +1,0 @@
-
-post http://localhost:1337/api/datas?IMEI=test&type=wifi&a1=5
-#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY2NjM1NDAzLCJleHAiOjE2NjkyMjc0MDN9.NLn-dokCuMrukeWdogBrCgcsRcEeihzs2eQWiRiyJ88

@@ -1,0 +1,11 @@
+post http://localhost:1337/api/patients
+content-type: application/json
+
+{
+  "data": {
+  "IMEI": "a1asdasd",
+  "firstname": "zzzxxx",
+  "lastname": "123456",
+  "doctor":4
+  }
+}

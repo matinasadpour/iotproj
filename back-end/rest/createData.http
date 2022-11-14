@@ -1,0 +1,2 @@
+
+post http://localhost:1337/api/datas?IMEI=1234567891&a1=1&a2=1&a3=1&a4=1&type=wifi
