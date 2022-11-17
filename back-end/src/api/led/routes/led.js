@@ -11,18 +11,12 @@ module.exports = {
       method: "POST",
       path: "/leds",
       handler: "led.update",
-      config: {
-        auth: false,
-      },
     },
     {
       // Path defined with a regular expression
       method: "GET",
       path: "/leds", // Only match when the URL parameter is composed of lowercase letters
       handler: "led.find",
-      config: {
-        auth: false,
-      },
     },
   ],
 };

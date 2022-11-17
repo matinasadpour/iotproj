@@ -4,14 +4,17 @@ import { useRouter } from 'vue-router';
 
 const $router = useRouter();
 
-if (sessionStorage.getItem('jwt')) $router.push('/admin/dashboard');
+if (sessionStorage.getItem('role') === 'admin')
+  $router.push('/admin/dashboard');
+if (sessionStorage.getItem('role') === 'doctor')
+  $router.push('/doctor/dashboard');
 
 const email = ref('');
 const password = ref('');
 const invalid = ref(false);
 
 const singin = async () => {
-  let res = await fetch(`${api}/api/auth/local`, {
+  let res = await fetch(`${apiURL}/api/auth/local`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +26,7 @@ const singin = async () => {
   } else if (res.status === 200) {
     let content = await res.json();
     sessionStorage.setItem('jwt', content.jwt);
-    res = await fetch(`${api}/api/users/me?populate=role`, {
+    res = await fetch(`${apiURL}/api/users/me?populate=role`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${content.jwt}`,
@@ -31,6 +34,7 @@ const singin = async () => {
     });
     content = await res.json();
     sessionStorage.setItem('role', content.role.name);
+    sessionStorage.setItem('username', content.username);
     if (content.role.name === 'admin') $router.push('/admin/dashboard');
     else if (content.role.name === 'doctor') $router.push('/doctor/dashboard');
   }

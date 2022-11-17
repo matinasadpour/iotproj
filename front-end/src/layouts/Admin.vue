@@ -1,12 +1,12 @@
 <script setup>
 import AdminNavbar from '@/components/Navbars/AdminNavbar.vue';
-import Sidebar from '@/components/Sidebar/Sidebar.vue';
+import AdminSidebar from '@/components/Sidebar/AdminSidebar.vue';
 import HeaderStats from '@/components/Headers/HeaderStats.vue';
 </script>
 
 <template>
   <div>
-    <sidebar />
+    <admin-sidebar />
     <div class="relative md:ml-64 bg-blueGray-100">
       <admin-navbar />
       <header-stats />

@@ -12,7 +12,7 @@ const invalid = ref(false);
 
 const singup = async () => {
   if (imei.value && email.value && username.value && password.value) {
-    const res = await fetch(`${api}/api/auth/local/register`, {
+    const res = await fetch(`${apiURL}/api/auth/local/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,15 +1,16 @@
 <script setup>
 import { ref, nextTick } from 'vue';
 
+const props = defineProps(['IMEI']);
+
+const IMEI = ref(props.IMEI);
 const content = ref(null);
 
 nextTick(async () => {
   let res = await fetch(
-    `${api}/api/datas?filters[IMEI][$eqi]=${sessionStorage.getItem(
-      'IMEI'
-    )}&pagination[pageSize]=25`,
+    `${apiURL}/api/datas?filters[IMEI][$eqi]=${IMEI.value}&sort=createdAt:desc&pagination[start]=0&pagination[limit]=30`,
     {
-      type: 'GET',
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem('jwt')}`,
       },
@@ -67,26 +68,6 @@ nextTick(async () => {
             >
               A4
             </th>
-            <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
-            >
-              D1
-            </th>
-            <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
-            >
-              D2
-            </th>
-            <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
-            >
-              D3
-            </th>
-            <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
-            >
-              D4
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -120,26 +101,6 @@ nextTick(async () => {
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             >
               {{ cnt.attributes.a4 }}
-            </td>
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-            >
-              {{ cnt.attributes.d1 }}
-            </td>
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-            >
-              {{ cnt.attributes.d2 }}
-            </td>
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-            >
-              {{ cnt.attributes.d3 }}
-            </td>
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-            >
-              {{ cnt.attributes.d4 }}
             </td>
           </tr>
         </tbody>

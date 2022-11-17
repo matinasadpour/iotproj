@@ -1,3 +1,7 @@
+<script setup>
+const username = sessionStorage.getItem('username');
+</script>
+
 <template>
   <!-- Navbar -->
   <nav
@@ -11,7 +15,7 @@
         class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
         href="javascript:void(0)"
       >
-        Dashboard
+        Hello {{ username }}!
       </a>
     </div>
   </nav>

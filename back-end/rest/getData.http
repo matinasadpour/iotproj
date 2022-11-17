@@ -1,0 +1,2 @@
+get http://localhost:1337/api/datas?sort=createdAt:desc&pagination[start]=0&pagination[limit]=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY4NDY0ODg0LCJleHAiOjE2NzEwNTY4ODR9.unoeENqfRSVb9fqI1IuL6k2vyz9AP9Fz3kX4JoyfDaQ

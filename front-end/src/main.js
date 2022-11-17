@@ -18,8 +18,17 @@ import Doctor from '@/layouts/Doctor.vue';
 
 // views for Admin layout
 
-import Dashboard from '@/views/admin/Dashboard.vue';
-import Settings from '@/views/admin/Settings.vue';
+import AdminDashboard from '@/views/admin/Dashboard.vue';
+
+// views for Docotor layout
+
+import DoctorDashboard from '@/views/doctor/Dashboard.vue';
+import DoctorError from '@/views/doctor/Error.vue';
+
+import DoctorBarChart from '@/views/doctor/dashboard/BarChart.vue';
+import DoctorTable from '@/views/doctor/dashboard/Table.vue';
+import DoctorLineChart from '@/views/doctor/dashboard/LineChart.vue';
+import DoctorSetting from '@/views/doctor/dashboard/Setting.vue';
 
 // views for Auth layout
 
@@ -55,26 +64,38 @@ const routes = [
     children: [
       {
         path: '/admin/dashboard',
-        component: Dashboard,
-      },
-      {
-        path: '/admin/settings',
-        component: Settings,
+        component: AdminDashboard,
       },
     ],
   },
   {
     path: '/doctor',
     redirect: '/doctor/dashboard',
-    component: Admin,
+    component: Doctor,
     children: [
       {
         path: '/doctor/dashboard',
-        component: Dashboard,
+        component: DoctorDashboard,
       },
       {
-        path: '/doctor/settings',
-        component: Settings,
+        path: '/doctor/error',
+        component: DoctorError,
+      },
+      {
+        path: '/doctor/barchart/:IMEI',
+        component: DoctorBarChart,
+      },
+      {
+        path: '/doctor/table/:IMEI',
+        component: DoctorTable,
+      },
+      {
+        path: '/doctor/linechart/:IMEI',
+        component: DoctorLineChart,
+      },
+      {
+        path: '/doctor/setting/:IMEI',
+        component: DoctorSetting,
       },
     ],
   },

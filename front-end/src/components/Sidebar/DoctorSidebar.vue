@@ -63,7 +63,7 @@ let exit = (e) => {
         <ul class="md:flex-col md:min-w-full flex flex-col list-none">
           <li class="items-center">
             <router-link
-              to="/admin/dashboard"
+              to="/doctor/dashboard"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -87,7 +87,7 @@ let exit = (e) => {
 
           <li class="items-center">
             <router-link
-              to="/admin/settings"
+              to="/doctor/error"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -101,10 +101,10 @@ let exit = (e) => {
                 ]"
               >
                 <i
-                  class="fas fa-tools mr-2 text-sm"
+                  class="fas fa-circle-exclamation mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Settings
+                Errors
               </a>
             </router-link>
           </li>
