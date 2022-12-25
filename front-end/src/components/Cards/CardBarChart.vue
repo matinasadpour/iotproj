@@ -97,6 +97,9 @@ export default {
             ],
             yAxes: [
               {
+                ticks: {
+                  min: 0,
+                },
                 display: true,
                 scaleLabel: {
                   display: false,

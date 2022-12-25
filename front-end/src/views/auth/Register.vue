@@ -6,12 +6,11 @@ const $router = useRouter();
 
 const email = ref(null);
 const username = ref(null);
-const imei = ref(null);
 const password = ref(null);
 const invalid = ref(false);
 
 const singup = async () => {
-  if (imei.value && email.value && username.value && password.value) {
+  if (email.value && username.value && password.value) {
     const res = await fetch(`${apiURL}/api/auth/local/register`, {
       method: 'POST',
       headers: {
@@ -20,7 +19,6 @@ const singup = async () => {
       body: JSON.stringify({
         email: email.value,
         username: username.value,
-        IMEI: imei.value,
         password: password.value,
       }),
     });
@@ -85,21 +83,6 @@ const singup = async () => {
                   type="text"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Username"
-                />
-              </div>
-
-              <div class="relative w-full mb-3">
-                <label
-                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  IMEI
-                </label>
-                <input
-                  v-model="imei"
-                  type="text"
-                  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="IMEI"
                 />
               </div>
 
