@@ -74,6 +74,14 @@ nextTick(async () => {
             >
               <RouterLink
                 :to="{
+                  path: `/doctor/view/${cnt.IMEI}`,
+                }"
+                class="text-lg p-1 mr-3"
+              >
+                <i class="fas fa-eye"></i>
+              </RouterLink>
+              <RouterLink
+                :to="{
                   path: `/doctor/barchart/${cnt.IMEI}`,
                 }"
                 class="text-lg p-1 mr-3"

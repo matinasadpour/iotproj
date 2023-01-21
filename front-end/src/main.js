@@ -25,6 +25,7 @@ import AdminDashboard from '@/views/admin/Dashboard.vue';
 import DoctorDashboard from '@/views/doctor/Dashboard.vue';
 import DoctorError from '@/views/doctor/Error.vue';
 
+import DoctorView from '@/views/doctor/dashboard/View.vue';
 import DoctorBarChart from '@/views/doctor/dashboard/BarChart.vue';
 import DoctorTable from '@/views/doctor/dashboard/Table.vue';
 import DoctorLineChart from '@/views/doctor/dashboard/LineChart.vue';
@@ -80,6 +81,10 @@ const routes = [
       {
         path: '/doctor/error',
         component: DoctorError,
+      },
+      {
+        path: '/doctor/view/:IMEI',
+        component: DoctorView,
       },
       {
         path: '/doctor/barchart/:IMEI',

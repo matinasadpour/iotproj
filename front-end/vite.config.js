@@ -12,8 +12,8 @@ export default defineConfig({
     },
   },
   define: {
-    apiURL: JSON.stringify('https://www.p1.iotproj.ir'),
-    //apiURL: JSON.stringify('http://localhost:1337'),
+    // apiURL: JSON.stringify('https://www.p1.iotproj.ir'),
+    apiURL: JSON.stringify('http://localhost:1337'),
     reqPeriod: 5000,
   },
 });
