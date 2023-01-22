@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countdowns",
+  "info": {
+    "singularName": "countdown",
+    "pluralName": "countdowns",
+    "displayName": "countdown",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IMEI": {
+      "type": "uid",
+      "required": true,
+      "maxLength": 10,
+      "minLength": 10
+    },
+    "date": {
+      "type": "datetime"
+    }
+  }
+}

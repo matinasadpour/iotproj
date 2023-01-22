@@ -11,6 +11,7 @@ module.exports = (config, { strapi }) => {
           data: { IMEI },
         });
       }
+
       temp = await strapi.db.query("api::setting.setting").findOne({
         where: { IMEI },
       });
@@ -19,11 +20,21 @@ module.exports = (config, { strapi }) => {
           data: { IMEI },
         });
       }
+
       temp = await strapi.db.query("api::patient.patient").findOne({
         where: { IMEI },
       });
       if (!temp) {
         await strapi.entityService.create("api::patient.patient", {
+          data: { IMEI },
+        });
+      }
+
+      temp = await strapi.db.query("api::countdown.countdown").findOne({
+        where: { IMEI },
+      });
+      if (!temp) {
+        await strapi.entityService.create("api::countdown.countdown", {
           data: { IMEI },
         });
       }

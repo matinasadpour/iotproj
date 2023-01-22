@@ -1,5 +1,31 @@
 <script setup>
+import { ref, onBeforeMount, onBeforeUnmount } from 'vue';
+
 const username = sessionStorage.getItem('username');
+let time = ref(null);
+let interval = null;
+
+onBeforeMount(() => {
+  interval = setInterval(() => {
+    // Concise way to format time according to system locale.
+    // In my case this returns "3:48:00 am"
+    time.value = Intl.DateTimeFormat(navigator.language, {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: false,
+      timeZone: 'Asia/Tehran',
+    }).format();
+  }, 1000);
+});
+
+onBeforeUnmount(() => {
+  clearInterval(interval);
+});
 </script>
 
 <template>
@@ -16,6 +42,10 @@ const username = sessionStorage.getItem('username');
         href="javascript:void(0)"
       >
         Hello {{ username }}!
+      </a>
+
+      <a class="text-white text-sm hidden lg:inline-block font-semibold">
+        {{ time }}
       </a>
     </div>
   </nav>
