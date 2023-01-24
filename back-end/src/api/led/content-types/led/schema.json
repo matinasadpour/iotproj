@@ -15,7 +15,7 @@
     "IMEI": {
       "type": "string",
       "required": true,
-      "maxLength": 10,
+      "maxLength": 15,
       "minLength": 10
     },
     "led1": {

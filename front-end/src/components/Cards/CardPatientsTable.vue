@@ -104,14 +104,14 @@ nextTick(async () => {
               >
                 <i class="fas fa-line-chart"></i>
               </RouterLink> -->
-              <RouterLink
+              <!-- <RouterLink
                 :to="{
                   path: `/doctor/setting/${cnt.IMEI}`,
                 }"
                 class="text-lg p-1 mr-3"
               >
                 <i class="fas fa-gear"></i>
-              </RouterLink>
+              </RouterLink> -->
             </td>
           </tr>
         </tbody>

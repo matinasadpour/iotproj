@@ -16,7 +16,7 @@
       "type": "uid",
       "required": true,
       "minLength": 10,
-      "maxLength": 10
+      "maxLength": 15
     },
     "wifi": {
       "type": "biginteger",

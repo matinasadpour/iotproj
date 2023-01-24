@@ -15,7 +15,7 @@
     "IMEI": {
       "type": "uid",
       "required": true,
-      "maxLength": 10,
+      "maxLength": 15,
       "minLength": 10
     },
     "date": {
