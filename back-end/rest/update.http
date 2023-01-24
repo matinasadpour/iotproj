@@ -1,0 +1,1 @@
+post http://localhost:1337/api/countdowns?IMEI=1234567891&countdown=start

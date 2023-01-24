@@ -22,7 +22,7 @@ module.exports = createCoreController(
               },
             });
           return ctx.send(temp, 200);
-        } else if (data.countdown === "start") {
+        } else if (data.countdown === "stop") {
           const temp = await strapi.db
             .query("api::countdown.countdown")
             .update({
