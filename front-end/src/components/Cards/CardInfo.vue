@@ -17,9 +17,20 @@ onMounted(async () => {
   const res = await fetch(`${apiURL}/api/countdowns?IMEI=${IMEI.value}`, {
     method: 'GET',
   });
-  let temp = (await res.json()).date;
-  if (temp) {
-    endDate.value = new Date(temp).getTime() + 4 * 60 * 60 * 1000;
+  const json = await res.json();
+  let start = json.endDate;
+  let stop = json.stop;
+  if (stop) {
+    endDate.value = new Date(start).getTime();
+    const now = new Date(stop).getTime();
+    const distance = endDate.value - now;
+    hours.value = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    minutes.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    seconds.value = Math.floor((distance % (1000 * 60)) / 1000);
+  } else if (start) {
+    endDate.value = new Date(start).getTime();
 
     x = setInterval(async () => {
       const now = new Date().getTime();
@@ -29,7 +40,7 @@ onMounted(async () => {
         clearInterval(x);
         endDate.value = null;
         await fetch(
-          `${apiURL}/api/countdowns?IMEI=${IMEI.value}&countdown=stop`,
+          `${apiURL}/api/countdowns?IMEI=${IMEI.value}&countdown=reset`,
           {
             method: 'POST',
           }

@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+
+const probs = defineProps(['bypass']);
+
+const bypass = computed(() => probs.bypass);
 
 const limitsModal = ref(false);
 
@@ -317,7 +321,12 @@ const limitsToggleModal = () => {
       ></div>
     </div>
     <div>
-      <button><i class="fa-solid fa-hand"></i></button>
+      <button>
+        <i
+          class="fa-solid fa-hand"
+          :class="{ 'text-green-500': bypass, 'text-red-500': !bypass }"
+        ></i>
+      </button>
     </div>
   </div>
 </template>

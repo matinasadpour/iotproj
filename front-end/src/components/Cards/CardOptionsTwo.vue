@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import CardLineChart from '@/components/Cards/CardLineChart.vue';
 
-const probs = defineProps(['IMEI']);
+const probs = defineProps(['IMEI', 'bypass']);
 
 const IMEI = ref(probs.IMEI);
+const bypass = computed(() => probs.bypass);
 
 const viewModal = ref(false);
 const heparinModal = ref(false);
@@ -428,11 +429,14 @@ const chartToggleModal = () => {
           class="opacity-25 fixed inset-0 z-40 bg-black"
         ></div>
       </div>
-      <div>
+      <div class="tooltip">
         <button><i class="fa-solid fa-vials"></i></button>
+        <span v-if="!bypass" class="tooltiptext text-base">Not BYPASS</span>
+        <span v-if="bypass" class="tooltiptext text-base">BYPASS</span>
       </div>
-      <div>
+      <div class="tooltip">
         <button><i class="fa-solid fa-filter"></i></button>
+        <span class="tooltiptext text-base">Filter</span>
       </div>
       <div>
         <button><i class="fa-solid fa-jug-detergent"></i></button>
@@ -440,3 +444,40 @@ const chartToggleModal = () => {
     </div>
   </div>
 </template>
+
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>

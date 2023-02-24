@@ -9,6 +9,7 @@ const patient = ref({
   firstname: '',
   lastname: '',
   doctor: 0,
+  pid: '',
 });
 
 onMounted(async () => {
@@ -40,6 +41,7 @@ const change = (event) => {
     patient.value.IMEI = temp.attributes.IMEI;
     patient.value.firstname = temp.attributes.firstname;
     patient.value.lastname = temp.attributes.lastname;
+    patient.value.pid = temp.attributes.pid;
     if (temp.attributes.doctor.data) {
       patient.value.doctor = temp.attributes.doctor.data.id;
     }
@@ -49,6 +51,7 @@ const change = (event) => {
     patient.value.firstname = '';
     patient.value.lastname = '';
     patient.value.doctor = 0;
+    patient.value.pid = '';
   }
 };
 
@@ -66,6 +69,7 @@ const refresh = () => {
   patient.value.firstname = '';
   patient.value.lastname = '';
   patient.value.doctor = 0;
+  patient.value.pid = '';
 };
 
 const save = async () => {
@@ -80,6 +84,7 @@ const save = async () => {
         data: {
           firstname: patient.value.firstname,
           lastname: patient.value.lastname,
+          pid: patient.value.pid,
           doctor: patient.value.doctor ? patient.value.doctor : null,
         },
       }),
@@ -171,6 +176,21 @@ const save = async () => {
               </label>
               <input
                 v-model="patient.lastname"
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              />
+            </div>
+          </div>
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                ID
+              </label>
+              <input
+                v-model="patient.pid"
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               />

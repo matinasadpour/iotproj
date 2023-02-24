@@ -52,6 +52,22 @@ const singup = async () => {
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
               <h6 class="text-blueGray-500 text-sm font-bold">Sign up</h6>
+              <ul class="flex-col list-none items-center hidden md:flex m-2">
+                <div>
+                  <a class="text-blueGray-500 block" href="#"
+                    ><div class="items-center flex">
+                      <span
+                        class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
+                        ><img
+                          alt="..."
+                          class="w-full rounded-full align-middle border-none shadow-lg"
+                          src="/logo.jpg"
+                        />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </ul>
             </div>
           </div>
           <div class="flex-auto px-6 lg:px-10 py-6 pt-0">
@@ -59,7 +75,6 @@ const singup = async () => {
               <div class="relative w-full mb-3">
                 <label
                   class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
                 >
                   Email
                 </label>
@@ -74,7 +89,6 @@ const singup = async () => {
               <div class="relative w-full mb-3">
                 <label
                   class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
                 >
                   UserName
                 </label>
@@ -89,7 +103,6 @@ const singup = async () => {
               <div class="relative w-full mb-3">
                 <label
                   class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
                 >
                   Password
                 </label>

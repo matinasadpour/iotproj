@@ -1,1 +1,1 @@
-post http://localhost:1337/api/errors?IMEI=1234567891&d3=1
+post http://localhost:1337/api/errors?IMEI=1234567891&d3=1&d1=1&a3=1

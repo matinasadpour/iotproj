@@ -18,7 +18,8 @@ module.exports = createCoreController(
             .update({
               where: { IMEI: data.IMEI },
               data: {
-                date: Date.now(),
+                endDate: new Date(new Date().getTime() + 4 * 60 * 60 * 1000),
+                stop: null,
               },
             });
           return ctx.send(temp, 200);
@@ -28,7 +29,18 @@ module.exports = createCoreController(
             .update({
               where: { IMEI: data.IMEI },
               data: {
-                date: null,
+                stop: Date.now(),
+              },
+            });
+          return ctx.send(temp, 200);
+        } else if (data.countdown === "reset") {
+          const temp = await strapi.db
+            .query("api::countdown.countdown")
+            .update({
+              where: { IMEI: data.IMEI },
+              data: {
+                endDate: null,
+                stop: null,
               },
             });
           return ctx.send(temp, 200);

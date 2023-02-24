@@ -38,6 +38,22 @@
     "read": {
       "type": "boolean",
       "default": false
+    },
+    "a1": {
+      "type": "boolean",
+      "default": false
+    },
+    "a2": {
+      "type": "boolean",
+      "default": false
+    },
+    "a3": {
+      "type": "boolean",
+      "default": false
+    },
+    "a4": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

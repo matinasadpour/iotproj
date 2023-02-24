@@ -36,6 +36,22 @@ onBeforeUnmount(() => {
     <div
       class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
     >
+      <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
+        <div>
+          <a class="text-blueGray-500 block" href="#"
+            ><div class="items-center flex">
+              <span
+                class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
+                ><img
+                  alt="..."
+                  class="w-full rounded-full align-middle border-none shadow-lg"
+                  src="/logo.jpg"
+                />
+              </span>
+            </div>
+          </a>
+        </div>
+      </ul>
       <!-- Brand -->
       <a
         class="text-white text-sm uppercase hidden lg:inline-block font-semibold"

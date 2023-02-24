@@ -81,8 +81,8 @@ onMounted(async () => {
         yAxes: [
           {
             ticks: {
-              min: -100,
-              max: 400,
+              min: -300,
+              max: 50,
             },
             display: true,
             scaleLabel: {
@@ -167,8 +167,8 @@ onMounted(async () => {
         yAxes: [
           {
             ticks: {
-              min: -400,
-              max: 400,
+              min: -300,
+              max: 50,
             },
             display: true,
             scaleLabel: {
@@ -234,7 +234,7 @@ onMounted(async () => {
             ticks: {
               // Include a dollar sign in the ticks
               callback: function (value, index, ticks) {
-                return 'TMP' + ': ' + value + 'mmHg';
+                return 'TMP' + ': ' + value + 'C';
               },
             },
             scaleLabel: {
@@ -253,8 +253,8 @@ onMounted(async () => {
         yAxes: [
           {
             ticks: {
-              min: 0,
-              max: 500,
+              min: 25,
+              max: 37,
             },
             display: true,
             scaleLabel: {
@@ -320,7 +320,7 @@ onMounted(async () => {
             ticks: {
               // Include a dollar sign in the ticks
               callback: function (value, index, ticks) {
-                return 'A4' + ': ' + value + 'mmHg';
+                return 'con' + ': ' + value + 'mS/cm';
               },
             },
             scaleLabel: {
@@ -339,8 +339,8 @@ onMounted(async () => {
         yAxes: [
           {
             ticks: {
-              min: 0,
-              max: 500,
+              min: 13,
+              max: 15,
             },
             display: true,
             scaleLabel: {
