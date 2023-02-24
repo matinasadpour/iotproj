@@ -17,42 +17,44 @@ onMounted(async () => {
   const res = await fetch(`${apiURL}/api/countdowns?IMEI=${IMEI.value}`, {
     method: 'GET',
   });
-  const json = await res.json();
-  let start = json.endDate;
-  let stop = json.stop;
-  if (stop) {
-    endDate.value = new Date(start).getTime();
-    const now = new Date(stop).getTime();
-    const distance = endDate.value - now;
-    hours.value = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    minutes.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    seconds.value = Math.floor((distance % (1000 * 60)) / 1000);
-  } else if (start) {
-    endDate.value = new Date(start).getTime();
-
-    x = setInterval(async () => {
-      const now = new Date().getTime();
+  if (!res.status === 204) {
+    const json = await res.json();
+    let start = json.endDate;
+    let stop = json.stop;
+    if (stop) {
+      endDate.value = new Date(start).getTime();
+      const now = new Date(stop).getTime();
       const distance = endDate.value - now;
-
-      if (distance < 0) {
-        clearInterval(x);
-        endDate.value = null;
-        await fetch(
-          `${apiURL}/api/countdowns?IMEI=${IMEI.value}&countdown=reset`,
-          {
-            method: 'POST',
-          }
-        );
-      }
-
       hours.value = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
       minutes.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       seconds.value = Math.floor((distance % (1000 * 60)) / 1000);
-    }, 1000);
+    } else if (start) {
+      endDate.value = new Date(start).getTime();
+
+      x = setInterval(async () => {
+        const now = new Date().getTime();
+        const distance = endDate.value - now;
+
+        if (distance < 0) {
+          clearInterval(x);
+          endDate.value = null;
+          await fetch(
+            `${apiURL}/api/countdowns?IMEI=${IMEI.value}&countdown=reset`,
+            {
+              method: 'POST',
+            }
+          );
+        }
+
+        hours.value = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        minutes.value = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        seconds.value = Math.floor((distance % (1000 * 60)) / 1000);
+      }, 1000);
+    }
   }
 });
 

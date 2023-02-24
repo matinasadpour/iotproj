@@ -25,10 +25,14 @@ onMounted(async () => {
   const res = await fetch(`${apiURL}/api/countdowns?IMEI=${IMEI}`, {
     method: 'GET',
   });
-  const json = await res.json();
-  let start = json.endDate;
-  let stop = json.stop;
-  bypass.value = start ? (stop ? true : false) : true;
+  if (res.status === 204) {
+    bypass.value = true;
+  } else {
+    const json = await res.json();
+    let start = json.endDate;
+    let stop = json.stop;
+    bypass.value = start ? (stop ? true : false) : true;
+  }
 
   if (bypass.value) {
     y = setInterval(async () => {
