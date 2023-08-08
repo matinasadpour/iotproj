@@ -234,7 +234,7 @@ onMounted(async () => {
             ticks: {
               // Include a dollar sign in the ticks
               callback: function (value, index, ticks) {
-                return 'TMP' + ': ' + value + 'C';
+                return 'TMP' + ': ' + value + 'mmHg';
               },
             },
             scaleLabel: {
@@ -253,8 +253,8 @@ onMounted(async () => {
         yAxes: [
           {
             ticks: {
-              min: 25,
-              max: 37,
+              min: 100,
+              max: 150,
             },
             display: true,
             scaleLabel: {

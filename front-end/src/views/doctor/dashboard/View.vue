@@ -1,65 +1,84 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import CardInfo from '@/components/Cards/CardInfo.vue';
 import CardOptionsOne from '@/components/Cards/CardOptionsOne.vue';
 import CardOptionsTwo from '@/components/Cards/CardOptionsTwo.vue';
 import CardBarChart from '@/components/Cards/CardBarChart.vue';
 import CardBlood from '@/components/Cards/CardBlood.vue';
+import CardStatus from '@/components/Cards/CardStatus.vue';
 
 const $route = useRoute();
 
 const IMEI = $route.params.IMEI;
+const fn = $route.params.fn;
+const ln = $route.params.ln;
+
+const probs = defineProps(['fn', 'ln']);
 
 const bypass = ref(null);
 
 const content = ref([]);
 const alertOpen = ref(false);
+const countdown = ref(null);
 
 const bypassColor = ref('text-blue-800');
 
 let x = null;
 let y = null;
+let z = null;
 
-onMounted(async () => {
+const zz = async () => {
   const res = await fetch(`${apiURL}/api/countdowns?IMEI=${IMEI}`, {
     method: 'GET',
   });
   if (res.status === 204) {
     bypass.value = true;
   } else {
-    const json = await res.json();
-    let start = json.endDate;
-    let stop = json.stop;
+    countdown.value = await res.json();
+    let start = countdown.value.endDate;
+    let stop = countdown.value.stop;
     bypass.value = start ? (stop ? true : false) : true;
   }
+};
 
-  if (bypass.value) {
+const xx = async () => {
+  let url = `${apiURL}/api/errors?sort=createdAt:desc`;
+  url += `&filters[IMEI][$eq]=${IMEI}`;
+
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem('jwt')}`,
+    },
+  });
+  const tmp = (await res.json()).data;
+  content.value = tmp.filter((e) => !e.attributes.read);
+  if (content.value.length) alertOpen.value = true;
+};
+
+onMounted(async () => {
+  zz();
+  z = setInterval(zz, reqPeriod);
+  xx();
+  x = setInterval(xx, reqPeriod);
+});
+
+watch(bypass, (newBypass) => {
+  if (newBypass) {
     y = setInterval(async () => {
       bypassColor.value =
         bypassColor.value === 'text-white' ? 'text-blue-800' : 'text-white';
     }, 500);
+  } else {
+    clearInterval(y);
   }
-
-  x = setInterval(async () => {
-    let url = `${apiURL}/api/errors?sort=createdAt:desc`;
-    url += `&filters[IMEI][$eq]=${IMEI}`;
-
-    const res = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem('jwt')}`,
-      },
-    });
-    const tmp = (await res.json()).data;
-    content.value = tmp.filter((e) => !e.attributes.read);
-    if (content.value.length) alertOpen.value = true;
-  }, reqPeriod);
 });
 
 onBeforeUnmount(() => {
   clearInterval(x);
   clearInterval(y);
+  clearInterval(z);
 });
 
 const closeAlert = async () => {
@@ -123,10 +142,19 @@ const closeAlert = async () => {
     </div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
-        <card-info class="h-full" :IMEI="IMEI" />
+        <card-info
+          class="h-full"
+          :IMEI="IMEI"
+          :countdown="countdown"
+          :fn="fn"
+          :ln="ln"
+        />
       </div>
-      <div class="w-full xl:w-6/12 px-4">
+      <div class="w-full xl:w-3/12 px-4">
         <card-options-one :IMEI="IMEI" :bypass="bypass" />
+      </div>
+      <div class="w-full xl:w-3/12 px-4">
+        <card-status :IMEI="IMEI" :bypass="bypass" />
       </div>
     </div>
     <div class="flex flex-wrap mt-4">

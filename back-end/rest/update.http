@@ -1,1 +1,2 @@
-post http://localhost:1337/api/countdowns?IMEI=1234567891&countdown=start
+post http://localhost:1337/api/countdowns?IMEI=1234567891&countdown=stop
+# post http://p1.iotproj.ir/api/countdowns?IMEI=1111111111&countdown=start&location=56

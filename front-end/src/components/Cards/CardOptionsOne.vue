@@ -324,7 +324,7 @@ const limitsToggleModal = () => {
       <button>
         <i
           class="fa-solid fa-hand"
-          :class="{ 'text-green-500': bypass, 'text-red-500': !bypass }"
+          :class="{ 'text-green-500': !bypass, 'text-red-500': bypass }"
         ></i>
       </button>
     </div>

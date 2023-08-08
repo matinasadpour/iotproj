@@ -24,7 +24,16 @@ onMounted(async () => {
       Authorization: `Bearer ${sessionStorage.getItem('jwt')}`,
     },
   });
-  content.value = (await res1.json()).data;
+  const tempp = (await res1.json()).data;
+  content.value = tempp.map((e) => {
+    const temppp = temp.find((ee) => ee.IMEI === e.attributes.IMEI);
+    return {
+      firstname: temppp.firstname,
+      lastname: temppp.lastname,
+      pid: temppp.pid,
+      ...e,
+    };
+  });
 });
 </script>
 
@@ -54,48 +63,53 @@ onMounted(async () => {
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              IMEI
+              ID
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              D1
+              Name
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              D2
+              ABD
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              D3
+              BLD
+            </th>
+            <th
+              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
+            >
+              Heparin
             </th>
 
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              D4
+              TEMP
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              A1
+              VP
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              A2
+              AP
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              A3
+              TMP
             </th>
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
             >
-              A4
+              Conductivity
             </th>
           </tr>
         </thead>
@@ -115,7 +129,12 @@ onMounted(async () => {
             <th
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             >
-              {{ cnt.attributes.IMEI }}
+              {{ cnt.pid }}
+            </th>
+            <th
+              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            >
+              {{ cnt.firstname + ' ' + cnt.lastname }}
             </th>
             <td
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"

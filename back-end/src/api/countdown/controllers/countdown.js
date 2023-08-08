@@ -22,6 +22,16 @@ module.exports = createCoreController(
                 stop: null,
               },
             });
+
+          if (data.location) {
+            await strapi.db.query("api::patient.patient").update({
+              where: { IMEI: data.IMEI },
+              data: {
+                location: data.location,
+              },
+            });
+          }
+
           return ctx.send(temp, 200);
         } else if (data.countdown === "stop") {
           const temp = await strapi.db

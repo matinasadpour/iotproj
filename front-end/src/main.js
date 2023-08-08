@@ -83,7 +83,7 @@ const routes = [
         component: DoctorError,
       },
       {
-        path: '/doctor/view/:IMEI',
+        path: '/doctor/view/:IMEI/:fn/:ln',
         component: DoctorView,
       },
       {

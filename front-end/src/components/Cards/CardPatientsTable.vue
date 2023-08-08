@@ -84,7 +84,7 @@ nextTick(async () => {
             >
               <RouterLink
                 :to="{
-                  path: `/doctor/view/${cnt.IMEI}`,
+                  path: `/doctor/view/${cnt.IMEI}/${cnt.firstname}/${cnt.lastname}`,
                 }"
                 class="text-lg p-1 mr-3"
               >

@@ -436,7 +436,8 @@ const chartToggleModal = () => {
       </div>
       <div class="tooltip">
         <button><i class="fa-solid fa-filter"></i></button>
-        <span class="tooltiptext text-base">Filter</span>
+        <span v-if="!bypass" class="tooltiptext text-base">Filter</span>
+        <span v-if="bypass" class="tooltiptext text-base">Not Filter</span>
       </div>
       <div>
         <button><i class="fa-solid fa-jug-detergent"></i></button>
